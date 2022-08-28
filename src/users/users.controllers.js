@@ -17,19 +17,20 @@ const getUserById = (id) => {
 
 const createUser = (data) => {
     const newUser = {
-        id: uuid.v4(),
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: hashPassword(),
-        phone: '',
-        birthday_date: '',
-        age: '',
-        rol: '',
-        profile_image: '',
-        active: true,
-        verified: false
+        id: uuid.v4(), //obligatorio y único
+        first_name: data.first_name, //obligatorio
+        last_name: data.last_name, //obligatorio
+        email: data.email, //obligatorio y único
+        password: hashPassword(data.password), //obligatorio
+        phone: data.phone ? data.phone : '', //unico
+        birthday_date: '', //obligatorio
+        rol: 'normal', //obligatorio y por defecto "normal"
+        profile_image: data.profile_image ? DataTransfer.profile_image: '',
+        country: '', //obligatorio
+        is_active: true, //obligatorio y por defecto 
+        trueverified: false//obligatorio y por defecto false
     }
     console.log(newUser)
 }
-createUser()
+
+createUser({password: 'root'})
